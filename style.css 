@@ -1,0 +1,307 @@
+/**
+ * Smart Switch v1.2 (Production Stylesheet)
+ * Created by Newton Maina & Peter Wanyoike
+ * Copyright (c) 2026. All rights reserved.
+ */
+
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-blue: #38bdf8;
+    --accent-green: #22c55e;
+    --accent-red: #ef4444;
+    --input-bg: #334155;
+    --border-color: #475569;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.app {
+    width: 100%;
+    max-width: 420px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* AUTHENTICATION SCREEN */
+.login-screen {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 32px 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.logo {
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 24px;
+}
+
+.auth-tabs {
+    display: flex;
+    background-color: var(--input-bg);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.auth-tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-tab.active {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-blue);
+}
+
+.forgot-link-container, .back-link-container {
+    text-align: right;
+}
+
+.forgot-link {
+    color: var(--accent-blue);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.login-button {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s;
+}
+
+.login-button:hover {
+    opacity: 0.9;
+}
+
+.auth-message {
+    font-size: 13px;
+    text-align: center;
+}
+
+.auth-message.error {
+    color: var(--accent-red);
+}
+
+.auth-message.success {
+    color: var(--accent-green);
+}
+
+/* MAIN DASHBOARD INTERFACE */
+.main-app {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--card-bg);
+    padding: 16px 20px;
+    border-radius: 16px;
+}
+
+header h1 {
+    font-size: 18px;
+}
+
+header p {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.logout-button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.device-card, .info-card {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.device-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.connection {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--accent-red);
+}
+
+.status-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 24px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.status-circle.on {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.status-circle.off {
+    border-color: var(--border-color);
+    opacity: 0.7;
+}
+
+#statusIcon {
+    font-size: 32px;
+}
+
+#statusText {
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.control-button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.on-button {
+    background-color: var(--accent-green);
+    color: #ffffff;
+}
+
+.off-button {
+    background-color: var(--accent-red);
+    color: #ffffff;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-card h3 {
+    font-size: 14px;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.info-row span {
+    color: var(--text-secondary);
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.copyright {
+    font-size: 10px;
+    opacity: 0.7;
+}
