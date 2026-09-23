@@ -1,0 +1,23 @@
+{
+  "name": "Smart Switch",
+  "short_name": "Smart Switch",
+  "version": "1.2",
+  "description": "Phone controlled electrical switch v1.2 - Created by Newton Maina & Peter Wanyoike",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b0f14",
+  "background_color": "#0b0f14",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
