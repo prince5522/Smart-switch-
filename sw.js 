@@ -1,0 +1,63 @@
+/**
+ * Smart Switch Service Worker v1.2 (Network-First Strategy)
+ * Created by Newton Maina & Peter Wanyoike
+ * Copyright (c) 2026. All rights reserved.
+ */
+
+const CACHE_NAME = "smart-switch-v1.2";
+const STATIC_ASSETS = [
+    "./",
+    "./index.html",
+    "./style.css",
+    "./app.js",
+    "./manifest.json"
+];
+
+self.addEventListener("install", event => {
+    self.skipWaiting();
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(async cache => {
+            for (const file of STATIC_ASSETS) {
+                try {
+                    await cache.add(file);
+                } catch (err) {
+                    console.warn(`Failed to cache asset: ${file}`, err);
+                }
+            }
+        })
+    );
+});
+
+self.addEventListener("activate", event => {
+    event.waitUntil(
+        caches.keys().then(keys => {
+            return Promise.all(
+                keys.map(key => {
+                    if (key !== CACHE_NAME) {
+                        return caches.delete(key);
+                    }
+                })
+            );
+        }).then(() => self.clients.claim())
+    );
+});
+
+self.addEventListener("fetch", event => {
+    // Direct network requests for real-time hardware endpoints
+    if (event.request.url.includes("/on") || event.request.url.includes("/off") || event.request.url.includes("/status")) {
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
+    // Network-first caching for offline PWA UI availability
+    event.respondWith(
+        fetch(event.request)
+            .then(networkResponse => {
+                caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, networkResponse.clone());
+                });
+                return networkResponse;
+            })
+            .catch(() => caches.match(event.request))
+    );
+});
