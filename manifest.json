@@ -1,0 +1,10 @@
+{
+  "name": "Smart Switch",
+  "short_name": "Smart Switch",
+  "description": "Phone controlled electrical switch",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0b0f14",
+  "background_color": "#0b0f14"
+}
